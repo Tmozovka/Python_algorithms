@@ -55,7 +55,7 @@ def isValidBSTInorderTraversal(root):
 	:type root: TreeNode
 	:rtype: bool
 	"""
-	stack, inorder = [], float('-inf')
+	stack, current_min = [], float('-inf')
 	while stack or root:
 		while root:
 			stack.append(root)
@@ -64,9 +64,9 @@ def isValidBSTInorderTraversal(root):
 		# If next element in inorder traversal
 		# is smaller than the previous one
 		# that's not BST.
-		if root.val <= inorder:
+		if current_min >= root.val:
 			return False
-		inorder = root.val
+		current_min = root.val
 		root = root.right
 
 	return True
