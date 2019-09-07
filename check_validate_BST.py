@@ -56,14 +56,11 @@ def isValidBSTInorderTraversal(root):
 	:rtype: bool
 	"""
 	stack, inorder = [], float('-inf')
-	stack_test = []
 	while stack or root:
 		while root:
 			stack.append(root)
-			stack_test.append(root.val)
 			root = root.left
 		root = stack.pop()
-		_ = stack_test.pop()
 		# If next element in inorder traversal
 		# is smaller than the previous one
 		# that's not BST.
